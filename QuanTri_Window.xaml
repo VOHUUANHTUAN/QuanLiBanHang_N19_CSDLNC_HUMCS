@@ -1,0 +1,448 @@
+﻿<Window x:Class="Csdhnc_N19_BanHang.QuanTri_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Csdhnc_N19_BanHang"
+        mc:Ignorable="d"                 
+        WindowStartupLocation="CenterScreen"
+        Background="#0096AE"
+        MinHeight="600" 
+        MinWidth="875"
+        Height="600" 
+        Width="977"        
+        Icon="icon/windows.png"
+        Title="Quản trị viên">
+    <Window.Resources>
+        <Style x:Key="MyStyle_GridBackground"  TargetType="Grid">
+            <Setter Property="Background" Value="Transparent"/>
+
+        </Style>
+        <!--Định dạng cho Label-->
+        <Style x:Key="MyStyle_Label"  TargetType="Label">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+        <!--Định dạng cho Button-->
+        <Style x:Key="MyStyle_Button"  TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Width" Value="90"/>
+            <Setter Property="Height" Value="34"/>
+        </Style>
+
+        <!--Định dạng cho Textbox-->
+        <Style x:Key="MyStyle_TextBox"  TargetType="TextBox">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Height" Value="34"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+        <!--Định dạng cho ReadOnlyTextbox-->
+        <Style x:Key="MyStyle_ReadOnlyTextbox"  TargetType="TextBox">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Height" Value="34"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+
+            <Setter Property="Background" Value="#ebecf0"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+        </Style>
+        <!--Định dạng cho DatePicker-->
+        <Style x:Key="MyStyle_DatePicker"  TargetType="DatePicker">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Height" Value="34"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <!--Định dạng cho ComboBox-->
+        <Style x:Key="MyStyle_ComboBox"  TargetType="ComboBox">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Height" Value="34"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <!--Định dạng cho PasswordBox-->
+        <Style x:Key="MyStyle_PasswordBox"  TargetType="PasswordBox">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Height" Value="34"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="CellRightAlign">
+            <Setter Property="Control.HorizontalAlignment" Value="Right" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <TabControl Margin="0,0,0,0" BorderBrush ="Gainsboro" TabStripPlacement="Left" FontSize="16">
+            <!--Định dạng memu-->
+            <TabControl.Resources>
+                <Style TargetType="TabItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+                                <Border Name="Border" BorderThickness="0" BorderBrush="Gainsboro" CornerRadius="4,4,4,4" Margin="2,3,4,3">
+                                    <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="20,10, 0, 0"
+                                        Height="50"
+                                        Width="150"/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Border" Property="Background" Value="#65CDD5" />
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="False">
+                                        <Setter TargetName="Border" Property="Background" Value="GhostWhite" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
+            <!--Cửa số Thông tin-->
+            <TabItem Header="Thông tin" Loaded="Tt_loaded" >
+                <TabControl Margin="10" BorderBrush ="Gainsboro">
+                    <TabControl.Resources>
+                        <Style TargetType="TabItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="TabItem">
+                                        <Border Name="Border" BorderThickness="1,1,1,0" BorderBrush="Gainsboro" CornerRadius="4,4,0,0" Margin="2,0">
+                                            <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="10,2"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter TargetName="Border" Property="Background" Value="Cyan" />
+                                            </Trigger>
+                                            <Trigger Property="IsSelected" Value="False">
+                                                <Setter TargetName="Border" Property="Background" Value="GhostWhite" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </TabControl.Resources>
+                    <!--Bắt đầu Thông tin cá nhân-->
+                    <TabItem Header="Thông tin cá nhân">
+                        <Grid Style="{StaticResource MyStyle_GridBackground}" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="190"/>
+                                <ColumnDefinition Width="300"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="300"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="1" Grid.Column="3">
+                                <Image Source="icon\quantri.png" HorizontalAlignment="Left" Height="70" Width="70"></Image>
+                            </Grid>
+                            <Grid Grid.Row="2" Grid.Column="2">
+                                <Label FontSize="18" Content="Mã quản trị" Margin="0,50,0,0" Style="{StaticResource MyStyle_Label}"/>
+                                <Label FontSize="18" Content="Họ tên" Margin="0,100,0,0" Style="{StaticResource MyStyle_Label}"/>
+
+                            </Grid>
+                            <Grid Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="39*"/>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="264*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label x:Name="Tt_lb_thongtincanhan_errorout"  
+                               Content="" 
+                               Margin="0,0,0,4.6"
+                               Style="{StaticResource MyStyle_Label}" 
+                               HorizontalAlignment="Right" 
+                               VerticalAlignment="Bottom" Grid.Column="2"/>
+                            </Grid>
+
+                            <Grid Grid.Row="2" Grid.Column="3" >
+                                <TextBox IsReadOnly="True" FontSize="18" x:Name="Tt_tb_maquantri" Margin="0,50,0,0" Width="250" Style="{StaticResource MyStyle_ReadOnlyTextbox}"/>
+                                <TextBox FontSize="18" x:Name="Tt_tb_hoten" Margin="0,100,0,0" Width="250" Style="{StaticResource MyStyle_TextBox}"/>
+                                <Button x:Name="Tt_bt_capnhat" Content="Cập nhật" HorizontalAlignment="Right" Margin="0,200,0,0" VerticalAlignment="Top" Width="90" Height="30" FontSize="16" Click="Tt_capnhatthongtincanhan_click"/>
+                            </Grid>
+
+                        </Grid>
+
+                    </TabItem>
+                    <!--Kết thúc Thông tin cá nhân-->
+                    <!--Bắt đầu đổi mat khẩu-->
+                    <TabItem Header="Đổi mật khẩu" Loaded="Tt_doimatkhau_loaded" >
+                        <Grid Style="{StaticResource MyStyle_GridBackground}" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="190"/>
+                                <ColumnDefinition Width="300"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="300"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="1" Grid.Column="3">
+                                <Image Source="icon\pass1.png" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="50"></Image>
+                            </Grid>
+                            <Grid Grid.Row="2" Grid.Column="2" >
+                                <Label Content="Tên đăng nhập"  Margin="0,0,0,0" Style="{StaticResource MyStyle_Label}"/>
+                                <Label Content="Mật khẩu cũ"  Margin="0,50,0,0" Style="{StaticResource MyStyle_Label}"/>
+                                <Label Content="Mật khẩu"  Margin="0,100,0,0" Style="{StaticResource MyStyle_Label}"/>
+                                <Label Content="Nhập lại mật khẩu" Margin="0,150,0,0" Style="{StaticResource MyStyle_Label}"/>
+                            </Grid>
+                            <Grid Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="2" Margin="0.2,0,-0.2,49.2" Grid.RowSpan="2">
+                                <Label x:Name="Tt_lb_doimatkhau_errorout"  
+                               Content="" 
+                               Margin="0,0,0,5"
+                               Style="{StaticResource MyStyle_Label}" 
+                               HorizontalAlignment="Right" 
+                               VerticalAlignment="Bottom"/>
+                            </Grid>
+                            <Grid Grid.Row="2" Grid.Column="3" >
+                                <TextBox x:Name="TT_tb_taikhoan" IsReadOnly="True" Margin="0,0,0,0" Width="250" Style="{StaticResource MyStyle_ReadOnlyTextbox}" Grid.ColumnSpan="2"/>
+                                <PasswordBox x:Name="TT_tb_matkhaucu"  Margin="0,50,0,0"  Width="250" Style="{StaticResource MyStyle_PasswordBox}" Grid.ColumnSpan="2"/>
+                                <PasswordBox x:Name="TT_tb_matkhaumoi"  Margin="0,100,0,0"  Width="250" Style="{StaticResource MyStyle_PasswordBox}" Grid.ColumnSpan="2"/>
+                                <PasswordBox x:Name="TT_tb_matkhaumoi_2"  Margin="0,150,0,0"  Width="250" Style="{StaticResource MyStyle_PasswordBox}" Grid.ColumnSpan="2"/>
+                                <Button x:Name="TT_bt_capnhatmatkhau" Margin="0,200,0,0"  Content="Cập nhật" Grid.Column="1" HorizontalAlignment="Right"  Width="90" Height="30" FontSize="14" Click="Tt_capnhatmatkhau_click"/>
+                            </Grid>
+
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+                <!--Hết item Thông tin-->
+            </TabItem>
+
+            <!--Bắt đầu item Quản lí tài khoản-->
+            <TabItem Header="Quản lí tài khoản" >
+                <Grid  Style="{StaticResource MyStyle_GridBackground}" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="170"/>
+                        <ColumnDefinition Width="230"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="10"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="0.75*"/>
+                        <RowDefinition Height="1.5*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="35"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" >
+                        <Label x:Name="Ql_lb_errorout"  
+                               Content="" 
+                               Margin="0,0,0,5"
+                               Style="{StaticResource MyStyle_Label}" 
+                               HorizontalAlignment="Left" 
+                               />
+                    </Grid>
+
+                    <Grid Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2">
+                        <StackPanel  HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal" >
+                            <TextBox  x:Name="dh_tb_doitac_rowperpage" Text="20"  
+                        BorderThickness="0" 
+                        TextChanged="dh_tb_doitac_rowperpage_TextChanged" 
+                              Grid.Column="1" Margin="20,6,20,0" Grid.Row="4"
+                                VerticalAlignment="Top" HorizontalAlignment="Right"/>
+                            <Button x:Name="dh_bt_doitac_prevpage" Click="dh_bt_doitac_prevpage_Click" Margin="0,0,5,0" Width="90" Content="Trang trước"  BorderThickness="0"/>
+                            <TextBox  x:Name="dh_tb_doitac_curpage" Text="1"  
+                                      BorderThickness="0" HorizontalAlignment="Right" VerticalAlignment="Center" 
+                                      TextChanged="dh_tb_doitac_curpage_TextChanged"/>
+                            <Label Content="/" HorizontalAlignment="Right" Margin="-6,0,-8,0" VerticalAlignment="Center" />
+                            <Label  x:Name="dh_doitac_totalpage" Content="21" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                            <Button x:Name="dh_bt_doitac_nextpage" Click="dh_bt_doitac_nextpage_Click"  Width="90" Content="Trang sau" BorderThickness="0"/>
+
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid Grid.Row="0" Grid.Column="4">
+                        <Label Content="Danh sách tài khoản"  HorizontalAlignment="Center" FontSize="20" Margin="0,0,0,0" Style="{StaticResource MyStyle_Label}"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Label Content="Nhập username" Margin="0,20,0,0" Style="{StaticResource MyStyle_Label}"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="2">
+                        <TextBox x:Name="Ql_tb_timusername" 
+                                 TextChanged="Ql_tb_timusername_TextChanged"
+                                 Background="#ebecf0" Margin="0,20,0,0" Width="230" Style="{StaticResource MyStyle_TextBox}"/>
+                        <Button x:Name="Ql_bt_timkiem" Content="Tìm kiếm" HorizontalAlignment="Center" Margin="0,80,0,0" VerticalAlignment="Top" Width="90" Height="30" FontSize="18" 
+                                Click="Ql_timkiemusername_click"
+                                />
+
+                    </Grid>
+                    <Grid Grid.Row="2" Grid.Column="1"  >
+                        <Label Content="Username"  Margin="0,40,0,0" Style="{StaticResource MyStyle_Label}"/>
+                        <Label Content="Loại"  Margin="0,100,0,0" Style="{StaticResource MyStyle_Label}"/>
+                        <Label Content="Tình trạng"  Margin="0,160,0,0" Style="{StaticResource MyStyle_Label}"/>
+                    </Grid>
+                    <Grid Grid.Row="2" Grid.Column="2" >
+                        <TextBox x:Name="Ql_tb_username" Margin="0,40,0,0" Width="230" Style="{StaticResource MyStyle_ReadOnlyTextbox}"/>
+                        <TextBox x:Name="Ql_tb_loai"  Margin="0,100,0,0" Width="230" Style="{StaticResource MyStyle_ReadOnlyTextbox}"/>
+                        <TextBox x:Name="Ql_tb_tinhtrang" Margin="0,160,0,0" Width="230" Style="{StaticResource MyStyle_ReadOnlyTextbox}"/>
+                    </Grid>
+                    <Grid Grid.Row="3" Grid.Column="1">
+                        <Label Content="Tình trạng mới"  Margin="0,40,0,0" Style="{StaticResource MyStyle_Label}"/>
+
+                    </Grid>
+                    <Grid Grid.Row="3" Grid.Column="2">
+                        <Label Content="Cập nhật tình trạng" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,0" Style="{StaticResource MyStyle_Label}"/>
+                        <TextBox x:Name="Ql_tb_tinhtrangmoi" Margin="0,40,0,0" Width="230" Style="{StaticResource MyStyle_ReadOnlyTextbox}"/>
+                        <Button x:Name="Ql_bt_capnhat" Content="Cập nhật " HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Top" Width="90" Height="30" FontSize="18" Click="Ql_capnhattinhtrang_click" RenderTransformOrigin="128.061,34.711"/>
+
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="4" Grid.RowSpan="4">
+                        <DataGrid x:Name="Ql_datagrid" 
+                                  AutoGenerateColumns="False"
+                                  Loaded="Ql_datagrid_Loaded"
+                                  SelectionChanged="Ql_datagrid_SelectionChanged" IsReadOnly="True"
+                                  HorizontalContentAlignment="Center" HorizontalAlignment="Center"
+                                  >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Username" Binding="{Binding Path=username}" Width="*"   />
+                                <DataGridTextColumn Header="Loại" Binding="{Binding Path=Loai}" Width="*" />
+                                <DataGridTextColumn Header="Tình trạng" Binding="{Binding Path=TinhTrang}" Width="*" />
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+
+                </Grid>
+                <!--Hết item Thông tin-->
+            </TabItem>
+            <!--Kết thúc item Quản lí tài khoản-->
+            <!--Cấp quyền-->
+            <TabItem Header="Cấp quyền" >
+                <Grid Style="{StaticResource MyStyle_GridBackground}" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition MinWidth="220" MaxWidth="350"/>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition MinWidth="220" MaxWidth="350"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="200"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="39*"/>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="264*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="Cq_lb_errorout"  
+                               Content="" 
+                               Margin="0,0,0,4.6"
+                               Style="{StaticResource MyStyle_Label}" 
+                               HorizontalAlignment="Right" 
+                               VerticalAlignment="Bottom" Grid.Column="2"/>
+                    </Grid>
+                    <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
+                        <Label Content="Vui lòng chọn role"  FontStyle="Italic" FontSize="16"      Margin="0, 0,0,0" Style="{StaticResource MyStyle_Label}"/>
+
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+                        <Label x:Name="Cq_lb_tenbang" Content=""  FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0, 0,0,0" Style="{StaticResource MyStyle_Label}"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="3">
+                        <Label Content="Username"        Margin="0, 0,0,0" Style="{StaticResource MyStyle_Label}"/>
+                        <Label Content="Pass" Margin="0,50,0,0" Style="{StaticResource MyStyle_Label}"/>
+                        <Label Content="Confirm pass"   Margin="0,100,0,0" Style="{StaticResource MyStyle_Label}"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Label Content="Role"  Margin="0, 0,0,0" Style="{StaticResource MyStyle_Label}"/>
+                        <Label Content="Mã"  Margin="0, 50,0,0" Style="{StaticResource MyStyle_Label}"/>
+                        <Label Content="Họ tên"       Margin="0,100,0,0" Style="{StaticResource MyStyle_Label}"/>
+
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="4">
+                        <TextBox x:Name="Cq_tb_username" Margin="0,0,0,0"   Width="200" Style="{StaticResource MyStyle_TextBox}"/>
+                        <PasswordBox x:Name="Cq_tb_matkhau"  Margin="0,50,0,0"  Width="200" Style="{StaticResource MyStyle_PasswordBox}"/>
+                        <PasswordBox x:Name="Cq_tb_matkhau2"  Margin="0,100,0,0"  Width="200" Style="{StaticResource MyStyle_PasswordBox}"/>
+                        <Button x:Name="Cq_btn_xoa" Content="Xoá"  Margin="18,0,0,0"    Click="Cq_btn_xoa_Click" Style="{StaticResource MyStyle_Button}"/>
+                        <Button x:Name="Qc_btn_sua" Content="Sửa"  Margin="0,0,100,0"   Click="Cq_btn_sua_Click" Style="{StaticResource MyStyle_Button}"/>
+                        <Button x:Name="Cq_btn_them" Content="Thêm" Margin="-70,0,200,0" Click="Cq_btn_them_Click" Style="{StaticResource MyStyle_Button}"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="2">
+                        <ComboBox x:Name="Cq_cb_loai"  Margin="0,0,0,0"  Width="200" Style="{StaticResource MyStyle_ComboBox}" AllowDrop="True" SelectionChanged="Cq_cb_loai_changed">
+                            <ComboBoxItem Content="Quản trị"/>
+                            <ComboBoxItem Content="Nhân viên"/>
+                        </ComboBox>
+                        <TextBox x:Name="Cq_tb_ma" Margin="0,50,0,0"   Width="200" Style="{StaticResource MyStyle_ReadOnlyTextbox}"/>
+                        <TextBox x:Name="Cq_tb_hoten" Margin="0,100,0,0"  Width="200" Style="{StaticResource MyStyle_TextBox}"/>
+
+                    </Grid>
+                    <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="6" Grid.RowSpan="2" Background="LightSkyBlue" Margin="10,10,10,0">
+                        <DataGrid x:Name="Cq_datagrid"
+                                          AutoGenerateColumns="False"
+                                          Loaded="Cq_datagrid_Loaded"
+                                          IsReadOnly="True"
+                                          HorizontalContentAlignment="Center" HorizontalAlignment="Center" SelectionChanged="Cq_datagrid_SelectionChanged"
+                                  >
+                            <DataGrid.Columns>
+                                <!--<DataGridTextColumn Width="*"/>-->
+                                <DataGridTextColumn Header="Username"  Binding="{Binding Path=username}"  Width="*" />
+                                <DataGridTextColumn Header="Mã" Binding="{Binding Path=Ma}"  Width="*" />
+                                <DataGridTextColumn Header="Họ tên" Binding="{Binding Path=HoTen}" Width="*" />
+                                <DataGridTextColumn Header="Loại" Binding="{Binding Path=Loai}" Width="*" />
+                                
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Grid>
+                <!--Hết item Cấp quyền-->
+            </TabItem>
+        </TabControl>
+
+        <!--Button đăng xuất-->
+        <Button x:Name="btn_dangxuat" Margin="35,20" 
+                HorizontalAlignment="Left" VerticalAlignment="Bottom" 
+                Click="Btn_dangxuat_Click_1"
+                BorderThickness="0"
+                Background="Transparent"
+                >
+            <Border CornerRadius="5" Background="AliceBlue">
+                <StackPanel >
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid>
+                            <Image Source="icon/logout.png" Margin="5" Height="25" Width="25" HorizontalAlignment="Left"/>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <TextBlock FontSize="15" Text="Đăng xuất" Margin="0,0,10,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </Button>
+    </Grid>
+</Window>

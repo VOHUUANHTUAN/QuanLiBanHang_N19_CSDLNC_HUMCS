@@ -1,0 +1,42 @@
+Nhân viên: (Các loại tình trạng HD: Chờ duyệt, ĐÃ DUYỆT, Hủy)
+-Xem, duyệt hợp đồng
+-Xem các hợp đồng đã duyệt
+
+Quản trị viên:
+-Xem, khóa tài khoản
+-Quản lí: ad, nhân viên
+
+Đối tác:
+-Thêm chức năng tìm kiếm: chi nhánh tìm theo STT
+thực phẩm tìm theo tên, đơn đặt hàng tìm theo MaDH
+
+Khách hàng:
+-Xem thực phẩm: search theo tên đối tác, theo tên món
+-Đặt hàng: thêm vào giỏ hàng và bấm mua
+-Quản lí đơn đặt hàng, xem các đơn đã đặt
+
+Tài xế:
+-Xem các đơn hàng chưa có người giao và nhân đơn
+-Xem các đơn hàng đã giao
+
+
+
+Tổng hợp các tình trạng:
+-Tài khoản: khóa, hoạt động
+-Các loại tình trạng HD: Chờ duyệt, ĐÃ DUYỆT, Hủy
+-Thực phẩm: đang bán, tạm ngưng, hết hàng hôm nay
+-Chi nhánh: hoạt động, tạm nghỉ
+-Đơn đặt hàng: chờ xử lí, chờ giao, đang giao, đã giao, Đã huỷ
+-Loại ẩm thực: đồ ăn đồ uống
+
+
+-Các thao tác động đến dòng tiền:
+-Lập hợp đồng: -1000000
+-Mua hàng: khách bị trừ tổng tiền hàng+15k ship
+shipper+15k
+đồi tác: 80% tổng đơn
+
+
+
+
+
